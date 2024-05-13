@@ -162,14 +162,18 @@ public class App {
             statement.setQueryTimeout(30);
 
             // The Query - TODO: complete this query
-            String query = "";
+            String query = "SELECT STARNAME " +
+                           "FROM STAR " +
+                           "NATURAL JOIN MOVSTAR " +
+                           "NATURAL JOIN MOVIE";
             
             // Get Result
             ResultSet results = statement.executeQuery(query);
 
             // Process all of the results
             while (results.next()) {
-                // TODO: Complete this
+                String starName = results.getString("STARNAME");
+                starNames.add(starName);
             }
 
             // Close the statement because we are done with it
